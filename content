@@ -1,0 +1,155 @@
+---
+name: franska-revolutionen-skatter
+title: Varför den franske kungen inte kunde höja skatterna – En interaktiv presentation
+type: react
+---
+
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  IconChevronLeft as ChevronLeft,
+  IconChevronRight as ChevronRight,
+  IconHome as Home,
+  IconBarChart as BarChartIcon,
+  IconUsers as Users,
+  IconSword as Sword,
+  IconCoins as Coins,
+  IconDocument as Document,
+  IconCrown as Crown,
+  IconScale as Scale,
+  IconTrendingDown as TrendingDown,
+  IconTrendingUp as TrendingUp,
+} from "nucleo-sharp";
+import {
+  PieChart,
+  Pie,
+  Cell,
+  ResponsiveContainer,
+  Tooltip,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Legend,
+} from "recharts";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTit
+
+
+
+// Befolkningsfördelning
+const skattefordelning = [
+  { name: "Tredje ståndet (98% av befolkningen)", value: 98, color: "#2563eb" },
+  { name: "Adel (1.5%)", value: 1.5, color: "#dc2626" },
+  { name: "Präster (0.5%)", value: 0.5, color: "#7c3aed" },
+];
+
+// Skatteintäkters fördelning
+const skatteintakter = [
+  { name: "Taille (Bönder)", value: 40, color: "#2563eb" },
+  { name: "Gabelle (Salt)", value: 20, color: "#059669" },
+  { name: "Dime (Kyrka)", value: 15, color: "#7c3aed" },
+  { name: "Corvée (Tvångsarbete)", value: 10, color: "#dc2626" },
+  { name: "Övriga", value: 15, color: "#6b7280" },
+];
+
+// Statsskulder över tid
+const statskulder = [
+  { name: "1715", skuld: 4, inkomster: 1 },
+  { name: "1750", skuld: 6, inkomster: 1.2 },
+  { name: "1770", skuld: 7, inkomster: 1.5 },
+  { name: "1789", skuld: 8, inkomster: 1.8 },
+];
+
+// Misslyckade reformer
+const reformer = [
+  { name: "Turgot (1774)", status: "Misslyckad", orsak: "Adeln avskedade honom" },
+  { name: "Necker (1776)", status: "Misslyckad", orsak: "Parlementet blockerade" },
+  { name: "Calonne (1783)", status: "Misslyckad", orsak: "Adeln vägrade" },
+  { name: "Brienne (1787)", status: "Misslyckad", orsak: "Parlementet blockerade" },
+];le } from "@/components/ui/card";
+
+
+export default function FrenchRevolutionTaxes() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [started, setStarted] = useState(false);
+
+  const handleNext = () => {
+    if (currentSlide < slides.length - 1) {
+      setCurrentSlide(currentSlide + 1);
+    }
+  };
+
+  const handlePrev = () => {
+    if (currentSlide > 0) {
+      setCurrentSlide(currentSlide - 1);
+    }
+  };
+
+  const handleHome = () => {
+    setCurrentSlide(0);
+    setStarted(false);
+  };
+
+  const handleStart = () => {
+    setStarted(true);
+    setCurrentSlide(0);
+  };
+
+  return (
+    <div className="min-h-screen bg-slate-100">
+      <AnimatePresence mode="wait">
+        {started ? (
+          <motion.div
+            key={currentSlide}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            {slides[currentSlide]}
+          </motion.div>
+        ) : (
+          <motion.div
+            key="home"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <HomeSlide onStart={handleStart} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {started && (
+        <Navigation
+          currentSlide={currentSlide}
+          totalSlides={slides.length - 1}
+          onNext={handleNext}
+          onPrev={handlePrev}
+          onHome={handleHome}
+        />
+      )}
+
+      {!started && (
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2">
+          <Button
+            variant="outline"
+            size="lg"
+            className="flex items-center gap-2"
+            onClick={handleStart}
+          >
+            <ChevronRight className="h-5 w-5" />
+            Börja presentation
+          </Button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+
+
+
