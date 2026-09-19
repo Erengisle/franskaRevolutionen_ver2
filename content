@@ -7,19 +7,19 @@ type: react
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  IconChevronLeft as ChevronLeft,
-  IconChevronRight as ChevronRight,
-  IconHome as Home,
-  IconBarChart as BarChartIcon,
-  IconUsers as Users,
-  IconSword as Sword,
-  IconCoins as Coins,
-  IconDocument as Document,
-  IconCrown as Crown,
-  IconScale as Scale,
-  IconTrendingDown as TrendingDown,
-  IconTrendingUp as TrendingUp,
-} from "nucleo-sharp";
+  ChevronLeft,
+  ChevronRight,
+  Home,
+  BarChart3 as BarChartIcon,
+  Users,
+  Swords,
+  Coins,
+  FileText as Document,
+  Crown,
+  Scale,
+  TrendingDown,
+  TrendingUp,
+} from "lucide-react";
 import {
   PieChart,
   Pie,
@@ -35,42 +35,352 @@ import {
 } from "recharts";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTit
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-
-
-// Befolkningsfördelning
+// Befolkningsfördelning mellan de tre ständerna
 const skattefordelning = [
-  { name: "Tredje ståndet (98% av befolkningen)", value: 98, color: "#2563eb" },
-  { name: "Adel (1.5%)", value: 1.5, color: "#dc2626" },
-  { name: "Präster (0.5%)", value: 0.5, color: "#7c3aed" },
+  { name: "Tredje ståndet (98%)", value: 98, color: "#2563eb" },
+  { name: "Adeln (1,5%)", value: 1.5, color: "#dc2626" },
+  { name: "Prästerskapet (0,5%)", value: 0.5, color: "#7c3aed" },
 ];
 
-// Skatteintäkters fördelning
+// Skatteintäkternas fördelning per skatteslag
 const skatteintakter = [
-  { name: "Taille (Bönder)", value: 40, color: "#2563eb" },
-  { name: "Gabelle (Salt)", value: 20, color: "#059669" },
-  { name: "Dime (Kyrka)", value: 15, color: "#7c3aed" },
-  { name: "Corvée (Tvångsarbete)", value: 10, color: "#dc2626" },
-  { name: "Övriga", value: 15, color: "#6b7280" },
+  { name: "Taille (bönder)", value: 40, color: "#2563eb" },
+  { name: "Gabelle (salt)", value: 20, color: "#059669" },
+  { name: "Dîme (kyrkan)", value: 15, color: "#7c3aed" },
+  { name: "Corvée (tvångsarbete)", value: 10, color: "#dc2626" },
+  { name: "Övrigt", value: 15, color: "#6b7280" },
 ];
 
-// Statsskulder över tid
-const statskulder = [
+// Statsskuld och statsinkomster över tid (miljarder livres)
+const statsskulder = [
   { name: "1715", skuld: 4, inkomster: 1 },
   { name: "1750", skuld: 6, inkomster: 1.2 },
   { name: "1770", skuld: 7, inkomster: 1.5 },
   { name: "1789", skuld: 8, inkomster: 1.8 },
 ];
 
-// Misslyckade reformer
+// Misslyckade finansreformer
 const reformer = [
-  { name: "Turgot (1774)", status: "Misslyckad", orsak: "Adeln avskedade honom" },
-  { name: "Necker (1776)", status: "Misslyckad", orsak: "Parlementet blockerade" },
-  { name: "Calonne (1783)", status: "Misslyckad", orsak: "Adeln vägrade" },
-  { name: "Brienne (1787)", status: "Misslyckad", orsak: "Parlementet blockerade" },
-];le } from "@/components/ui/card";
+  {
+    name: "Turgot",
+    ar: "1774–1776",
+    orsak:
+      "Ville avskaffa corvée och adelns skattefrihet – avskedades efter påtryckningar från adeln och drottningen.",
+  },
+  {
+    name: "Necker",
+    ar: "1776–1781",
+    orsak:
+      "Offentliggjorde statens finanser (Compte rendu) – tvingades avgå när adeln och hovet reagerade.",
+  },
+  {
+    name: "Calonne",
+    ar: "1783–1787",
+    orsak:
+      "Föreslog en enhetlig markskatt för alla stånd – notabelförsamlingen och adeln vägrade godkänna den.",
+  },
+  {
+    name: "Brienne",
+    ar: "1787–1788",
+    orsak:
+      "Försökte driva igenom Calonnes reformer – parlementet i Paris blockerade och krävde att ständerna sammankallades.",
+  },
+];
 
+function SlideHeader({ icon: Icon, badge, title }) {
+  return (
+    <CardHeader className="flex flex-row items-center gap-3 border-b border-slate-200 pb-4">
+      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 text-blue-700">
+        <Icon className="h-6 w-6" />
+      </div>
+      <div>
+        <Badge variant="outline" className="mb-1">
+          {badge}
+        </Badge>
+        <CardTitle className="text-xl md:text-2xl">{title}</CardTitle>
+      </div>
+    </CardHeader>
+  );
+}
+
+function CustomTooltip({ active, payload }) {
+  if (!active || !payload || !payload.length) return null;
+  const item = payload[0];
+  return (
+    <div className="rounded-md border border-slate-200 bg-white px-3 py-2 text-sm shadow-md">
+      <p className="font-medium">{item.name}</p>
+      <p className="text-slate-600">{item.value}%</p>
+    </div>
+  );
+}
+
+function HomeSlide({ onStart }) {
+  return (
+    <div className="flex min-h-screen flex-col items-center justify-center gap-8 px-6 text-center">
+      <div className="flex h-20 w-20 items-center justify-center rounded-full bg-blue-100 text-blue-700">
+        <Crown className="h-10 w-10" />
+      </div>
+      <div className="max-w-2xl space-y-4">
+        <h1 className="text-3xl font-bold text-slate-900 md:text-4xl">
+          Varför kunde inte den franske kungen höja skatterna?
+        </h1>
+        <p className="text-lg text-slate-600">
+          En interaktiv genomgång av ståndssamhället, skattesystemet och
+          statsskulden som ledde fram till franska revolutionen 1789.
+        </p>
+      </div>
+      <div className="flex flex-wrap justify-center gap-3">
+        <Badge variant="secondary" className="gap-1">
+          <Users className="h-3.5 w-3.5" /> Ståndssamhället
+        </Badge>
+        <Badge variant="secondary" className="gap-1">
+          <Coins className="h-3.5 w-3.5" /> Skatterna
+        </Badge>
+        <Badge variant="secondary" className="gap-1">
+          <TrendingUp className="h-3.5 w-3.5" /> Statsskulden
+        </Badge>
+        <Badge variant="secondary" className="gap-1">
+          <Scale className="h-3.5 w-3.5" /> Reformförsöken
+        </Badge>
+      </div>
+      <Button size="lg" className="gap-2" onClick={onStart}>
+        Börja presentation
+        <ChevronRight className="h-5 w-5" />
+      </Button>
+    </div>
+  );
+}
+
+function Navigation({ currentSlide, totalSlides, onNext, onPrev, onHome }) {
+  return (
+    <div className="fixed bottom-6 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 shadow-lg">
+      <Button variant="ghost" size="icon" onClick={onHome} aria-label="Till startsidan">
+        <Home className="h-5 w-5" />
+      </Button>
+      <Button
+        variant="ghost"
+        size="icon"
+        onClick={onPrev}
+        disabled={currentSlide === 0}
+        aria-label="Föregående sida"
+      >
+        <ChevronLeft className="h-5 w-5" />
+      </Button>
+      <span className="min-w-[3.5rem] text-center text-sm font-medium text-slate-600">
+        {currentSlide + 1} / {totalSlides + 1}
+      </span>
+      <Button
+        variant="ghost"
+        size="icon"
+        onClick={onNext}
+        disabled={currentSlide === totalSlides}
+        aria-label="Nästa sida"
+      >
+        <ChevronRight className="h-5 w-5" />
+      </Button>
+    </div>
+  );
+}
+
+function EstatesSlide() {
+  return (
+    <div className="mx-auto max-w-5xl px-6 py-24">
+      <Card>
+        <SlideHeader icon={Users} badge="1 / 5" title="Ståndssamhället" />
+        <CardContent className="grid gap-8 pt-6 md:grid-cols-2">
+          <div className="h-72">
+            <ResponsiveContainer width="100%" height="100%">
+              <PieChart>
+                <Pie
+                  data={skattefordelning}
+                  dataKey="value"
+                  nameKey="name"
+                  innerRadius={60}
+                  outerRadius={100}
+                  paddingAngle={2}
+                >
+                  {skattefordelning.map((entry) => (
+                    <Cell key={entry.name} fill={entry.color} />
+                  ))}
+                </Pie>
+                <Tooltip content={<CustomTooltip />} />
+                <Legend />
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
+          <div className="flex flex-col justify-center space-y-4 text-slate-700">
+            <p>
+              Frankrikes befolkning var indelad i tre stånd.{" "}
+              <strong>Tredje ståndet</strong> – bönder, hantverkare och
+              borgerskap – utgjorde 98 % av befolkningen men saknade politisk
+              makt.
+            </p>
+            <p>
+              <strong>Adeln</strong> (1,5 %) och <strong>prästerskapet</strong>{" "}
+              (0,5 %) ägde tillsammans en stor del av jorden, men var i
+              praktiken befriade från de flesta skatter.
+            </p>
+            <p className="rounded-md bg-blue-50 p-3 text-sm text-blue-900">
+              Skattebördan låg alltså nästan uteslutande på den grupp som
+              hade minst resurser att bära den.
+            </p>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
+
+function TaxRevenueSlide() {
+  return (
+    <div className="mx-auto max-w-5xl px-6 py-24">
+      <Card>
+        <SlideHeader icon={Coins} badge="2 / 5" title="Vem betalade skatten?" />
+        <CardContent className="grid gap-8 pt-6 md:grid-cols-2">
+          <div className="h-72">
+            <ResponsiveContainer width="100%" height="100%">
+              <PieChart>
+                <Pie data={skatteintakter} dataKey="value" nameKey="name" outerRadius={100}>
+                  {skatteintakter.map((entry) => (
+                    <Cell key={entry.name} fill={entry.color} />
+                  ))}
+                </Pie>
+                <Tooltip content={<CustomTooltip />} />
+                <Legend />
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
+          <div className="flex flex-col justify-center space-y-3 text-slate-700">
+            <p>
+              <strong>Taille</strong> var jordbruksskatten som bönderna
+              betalade – adeln och prästerskapet var undantagna.
+            </p>
+            <p>
+              <strong>Gabelle</strong> var en tvingande saltskatt, och{" "}
+              <strong>dîme</strong> gick till kyrkan trots att kyrkan själv
+              knappt betalade skatt.
+            </p>
+            <p>
+              <strong>Corvée</strong> var obetalt tvångsarbete på vägar och
+              broar – ytterligare en börda som föll på tredje ståndet.
+            </p>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
+
+function DebtSlide() {
+  return (
+    <div className="mx-auto max-w-5xl px-6 py-24">
+      <Card>
+        <SlideHeader icon={BarChartIcon} badge="3 / 5" title="En växande statsskuld" />
+        <CardContent className="space-y-6 pt-6">
+          <div className="h-72">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={statsskulder}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis
+                  label={{
+                    value: "Miljarder livres",
+                    angle: -90,
+                    position: "insideLeft",
+                  }}
+                />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="skuld" name="Statsskuld" fill="#dc2626" />
+                <Bar dataKey="inkomster" name="Statsinkomster" fill="#2563eb" />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+          <div className="flex items-start gap-3 rounded-md bg-red-50 p-4 text-sm text-red-900">
+            <Swords className="mt-0.5 h-5 w-5 flex-shrink-0" />
+            <p>
+              Kostsamma krig – bland annat stödet till den amerikanska
+              revolutionen – gjorde att skulden 1789 var mer än fyra gånger så
+              stor som de årliga statsinkomsterna.
+            </p>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
+
+function ReformsSlide() {
+  return (
+    <div className="mx-auto max-w-5xl px-6 py-24">
+      <Card>
+        <SlideHeader icon={Scale} badge="4 / 5" title="Misslyckade reformförsök" />
+        <CardContent className="space-y-4 pt-6">
+          {reformer.map((r) => (
+            <div
+              key={r.name}
+              className="flex flex-col gap-2 rounded-md border border-slate-200 p-4 sm:flex-row sm:items-start sm:justify-between"
+            >
+              <div>
+                <p className="font-medium text-slate-900">
+                  {r.name} <span className="font-normal text-slate-500">({r.ar})</span>
+                </p>
+                <p className="mt-1 text-sm text-slate-600">{r.orsak}</p>
+              </div>
+              <Badge variant="destructive" className="w-fit gap-1 self-start">
+                <TrendingDown className="h-3.5 w-3.5" />
+                Misslyckades
+              </Badge>
+            </div>
+          ))}
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
+
+function ConclusionSlide() {
+  return (
+    <div className="mx-auto max-w-5xl px-6 py-24">
+      <Card>
+        <SlideHeader
+          icon={Document}
+          badge="5 / 5"
+          title="Varför kunde kungen inte höja skatterna?"
+        />
+        <CardContent className="space-y-4 pt-6 text-slate-700">
+          <p>
+            Varje reformförsök krävde att adeln eller prästerskapet gav upp
+            sina skattefriheter, eller att parlementen (domstolarna) godkände
+            nya skatter – och båda grupperna använde sin makt för att
+            blockera förändring.
+          </p>
+          <p>
+            Kungen kunde i teorin kalla samman Ständerförsamlingen (États
+            Généraux) för att driva igenom en reform mot de privilegierade
+            ståndens vilja, men den hade inte sammanträtt sedan 1614 – att
+            göra det innebar en stor politisk risk.
+          </p>
+          <p className="rounded-md bg-blue-50 p-3 text-sm text-blue-900">
+            Ludvig XVI kallade till slut in Ständerförsamlingen 1789 för att
+            lösa finanskrisen – ett beslut som utlöste händelserna som ledde
+            till franska revolutionen.
+          </p>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
+
+const slides = [
+  <EstatesSlide key="estates" />,
+  <TaxRevenueSlide key="tax-revenue" />,
+  <DebtSlide key="debt" />,
+  <ReformsSlide key="reforms" />,
+  <ConclusionSlide key="conclusion" />,
+];
 
 export default function FrenchRevolutionTaxes() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -112,12 +422,7 @@ export default function FrenchRevolutionTaxes() {
             {slides[currentSlide]}
           </motion.div>
         ) : (
-          <motion.div
-            key="home"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
+          <motion.div key="home" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
             <HomeSlide onStart={handleStart} />
           </motion.div>
         )}
@@ -132,24 +437,6 @@ export default function FrenchRevolutionTaxes() {
           onHome={handleHome}
         />
       )}
-
-      {!started && (
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2">
-          <Button
-            variant="outline"
-            size="lg"
-            className="flex items-center gap-2"
-            onClick={handleStart}
-          >
-            <ChevronRight className="h-5 w-5" />
-            Börja presentation
-          </Button>
-        </div>
-      )}
     </div>
   );
 }
-
-
-
-
