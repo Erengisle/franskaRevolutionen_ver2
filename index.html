@@ -1,4 +1,4 @@
-<title>Livrens bankrutt</title>
+<title>Revolutionen i korthet</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <style>
   :root{
@@ -19,296 +19,125 @@
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
-      --bg:#15100a;
-      --surface:#1f1810;
-      --surface-2:#2b2116;
-      --ink:#ecdfc4;
-      --ink-soft:#b7a482;
-      --rule:#5f4d31;
-      --accent:#8bafdc;
-      --accent-2:#dcae54;
-      --danger:#e28a92;
-      --chart-teal:#7fb3aa;
-      --shadow:0 10px 30px -12px rgba(0,0,0,.6);
+      --bg:#15100a; --surface:#1f1810; --surface-2:#2b2116; --ink:#ecdfc4;
+      --ink-soft:#b7a482; --rule:#5f4d31; --accent:#8bafdc; --accent-2:#dcae54;
+      --danger:#e28a92; --chart-teal:#7fb3aa; --shadow:0 10px 30px -12px rgba(0,0,0,.6);
     }
   }
   :root[data-theme="dark"]{
-    --bg:#15100a;
-    --surface:#1f1810;
-    --surface-2:#2b2116;
-    --ink:#ecdfc4;
-    --ink-soft:#b7a482;
-    --rule:#5f4d31;
-    --accent:#8bafdc;
-    --accent-2:#dcae54;
-    --danger:#e28a92;
-    --chart-teal:#7fb3aa;
-    --shadow:0 10px 30px -12px rgba(0,0,0,.6);
+    --bg:#15100a; --surface:#1f1810; --surface-2:#2b2116; --ink:#ecdfc4;
+    --ink-soft:#b7a482; --rule:#5f4d31; --accent:#8bafdc; --accent-2:#dcae54;
+    --danger:#e28a92; --chart-teal:#7fb3aa; --shadow:0 10px 30px -12px rgba(0,0,0,.6);
   }
 
   html,body{height:100%;}
-  body{
-    margin:0;
-    background:var(--bg);
-    color:var(--ink);
-    font-family:var(--font-body);
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-  }
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
   *{box-sizing:border-box;}
   h1,h2{font-family:var(--font-display);font-weight:700;text-wrap:balance;margin:0;}
   .mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums;}
-  @media (prefers-reduced-motion: reduce){
-    *{animation:none!important;transition:none!important;}
-  }
+  @media (prefers-reduced-motion: reduce){ *{animation:none!important;transition:none!important;} }
 
-  #app{
-    min-height:100%;
-  }
+  #app{min-height:100%;}
 
-  /* ---------- top progress rail ---------- */
-  #rail{
-    position:fixed;
-    top:env(safe-area-inset-top,0px);
-    left:0;right:0;
-    height:3px;
-    background:var(--surface-2);
-    z-index:20;
-  }
-  #rail-fill{
-    height:100%;
-    width:0%;
-    background:var(--accent-2);
-    transition:width .35s ease;
-  }
+  #rail{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;height:3px;background:var(--surface-2);z-index:20;}
+  #rail-fill{height:100%;width:0%;background:var(--accent-2);transition:width .3s ease;}
   #rail[hidden]{display:none;}
 
-  /* ---------- shared section shell ---------- */
-  section{
-    min-height:100dvh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:56px 20px 40px;
-  }
+  section{min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:48px 20px 36px;}
   section[hidden]{display:none;}
-  section:not([hidden]){animation:fadeUp .5s ease both;}
-  @keyframes fadeUp{
-    from{opacity:0;transform:translateY(10px);}
-    to{opacity:1;transform:translateY(0);}
-  }
+  section:not([hidden]){animation:fadeUp .4s ease both;}
+  @keyframes fadeUp{ from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:translateY(0);} }
 
   .frame{width:100%;max-width:880px;}
 
-  /* ---------- cover ---------- */
-  #cover .frame{text-align:center;display:flex;flex-direction:column;align-items:center;gap:22px;}
-  .seal{
-    width:76px;height:76px;border-radius:50%;
-    display:flex;align-items:center;justify-content:center;
-    background:var(--surface);border:1.5px solid var(--rule);box-shadow:var(--shadow);
-    color:var(--accent-2);
-  }
-  .kicker{
-    font-family:var(--font-mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
-    color:var(--ink-soft);
-  }
-  #cover h1{font-size:clamp(2.4rem,7vw,4.2rem);line-height:1.02;}
-  #cover .lede{
-    max-width:46ch;color:var(--ink-soft);font-size:1.05rem;line-height:1.6;
-  }
-  .rule{
-    width:64px;height:2px;background:var(--accent-2);border:none;
-  }
+  #cover .frame{text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px;}
+  .seal{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--surface);border:1.5px solid var(--rule);box-shadow:var(--shadow);color:var(--accent-2);}
+  .kicker{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);}
+  #cover h1{font-size:clamp(2.2rem,6.6vw,3.8rem);line-height:1.03;}
+  #cover .lede{max-width:44ch;color:var(--ink-soft);font-size:1.02rem;line-height:1.55;}
+  .rule{width:64px;height:2px;background:var(--accent-2);border:none;}
   .tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}
-  .tag{
-    display:inline-flex;align-items:center;gap:6px;
-    border:1px solid var(--rule);border-radius:999px;
-    padding:6px 12px;font-size:.82rem;color:var(--ink-soft);
-    background:var(--surface);
-  }
+  .tag{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--rule);border-radius:999px;padding:6px 12px;font-size:.8rem;color:var(--ink-soft);background:var(--surface);}
   .tag svg{width:14px;height:14px;}
 
-  .cta{
-    appearance:none;border:none;cursor:pointer;
-    display:inline-flex;align-items:center;gap:10px;
-    background:var(--accent);color:var(--surface);
-    font-family:var(--font-body);font-size:1.02rem;font-weight:600;
-    padding:14px 26px;border-radius:8px;box-shadow:var(--shadow);
-    transition:transform .15s ease,background .15s ease;
-  }
+  .cta{appearance:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:var(--surface);font-family:var(--font-body);font-size:1rem;font-weight:600;padding:13px 24px;border-radius:8px;box-shadow:var(--shadow);transition:transform .15s ease;}
   .cta:hover{transform:translateY(-1px);}
   .cta:focus-visible,button:focus-visible{outline:2px solid var(--accent-2);outline-offset:3px;}
   .cta svg{width:18px;height:18px;}
-  .worksheets{
-    display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;justify-content:center;
-    font-size:.8rem;color:var(--ink-soft);
-  }
-  .worksheets a{color:var(--accent);text-decoration:none;border-bottom:1px dotted var(--accent);}
-  .worksheets a:hover{color:var(--accent-2);border-color:var(--accent-2);}
+  .altlink{font-size:.82rem;color:var(--ink-soft);}
+  .altlink a{color:var(--accent);text-decoration:none;border-bottom:1px dotted var(--accent);}
+  .altlink a:hover{color:var(--accent-2);border-color:var(--accent-2);}
 
-  /* ---------- chapter shell ---------- */
-  .chapter .frame{
-    background:var(--surface);
-    border:1px solid var(--rule);
-    border-radius:14px;
-    box-shadow:var(--shadow);
-    padding:clamp(22px,4vw,44px);
-  }
-  .chapter-head{
-    display:flex;align-items:flex-start;gap:16px;
-    border-bottom:1px solid var(--rule);
-    padding-bottom:18px;margin-bottom:22px;
-  }
-  .chapter-icon{
-    flex:none;width:48px;height:48px;border-radius:50%;
-    display:flex;align-items:center;justify-content:center;
-    background:var(--surface-2);color:var(--accent);
-  }
-  .chapter-icon svg{width:24px;height:24px;}
-  .eyebrow{
-    font-family:var(--font-mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
-    color:var(--accent-2);margin:0 0 4px;
-  }
-  .chapter-head h2{font-size:clamp(1.5rem,3.4vw,2.15rem);}
+  .chapter .frame{background:var(--surface);border:1px solid var(--rule);border-radius:14px;box-shadow:var(--shadow);padding:clamp(20px,3.6vw,40px);}
+  .chapter-head{display:flex;align-items:flex-start;gap:14px;border-bottom:1px solid var(--rule);padding-bottom:16px;margin-bottom:20px;}
+  .chapter-icon{flex:none;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--surface-2);color:var(--accent);}
+  .chapter-icon svg{width:22px;height:22px;}
+  .eyebrow{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-2);margin:0 0 4px;}
+  .chapter-head h2{font-size:clamp(1.4rem,3.2vw,2rem);}
 
-  .grid2{display:grid;grid-template-columns:1fr;gap:26px;}
+  .grid2{display:grid;grid-template-columns:1fr;gap:22px;}
   @media (min-width:720px){.grid2{grid-template-columns:1fr 1fr;align-items:center;}}
 
-  .prose p{margin:0 0 14px;color:var(--ink);line-height:1.65;}
+  .prose p{margin:0 0 12px;color:var(--ink);line-height:1.55;font-size:.98rem;}
   .prose p:last-child{margin-bottom:0;}
   .prose strong{color:var(--ink);}
-  .callout{
-    background:var(--surface-2);border-left:3px solid var(--accent-2);
-    border-radius:6px;padding:12px 14px;font-size:.94rem;color:var(--ink-soft);
-    display:flex;gap:10px;align-items:flex-start;
-  }
-  .callout svg{width:18px;height:18px;flex:none;margin-top:2px;color:var(--danger);}
+  .callout{background:var(--surface-2);border-left:3px solid var(--accent-2);border-radius:6px;padding:11px 13px;font-size:.9rem;color:var(--ink-soft);display:flex;gap:9px;align-items:flex-start;}
+  .callout svg{width:17px;height:17px;flex:none;margin-top:2px;color:var(--danger);}
 
-  /* ---------- chart pieces ---------- */
-  .chart-wrap{display:flex;flex-direction:column;align-items:center;gap:16px;}
-  .legend{list-style:none;margin:0;padding:0;width:100%;max-width:320px;}
-  .legend li{
-    display:flex;align-items:center;gap:8px;
-    padding:5px 0;font-size:.88rem;
-  }
+  .chart-wrap{display:flex;flex-direction:column;align-items:center;gap:14px;}
+  .legend{list-style:none;margin:0;padding:0;width:100%;max-width:300px;}
+  .legend li{display:flex;align-items:center;gap:8px;padding:4px 0;font-size:.85rem;}
   .legend li+li{border-top:1px dashed var(--rule);}
   .swatch{width:11px;height:11px;border-radius:3px;flex:none;}
   .legend .name{flex:1;color:var(--ink);}
   .legend .val{font-family:var(--font-mono);color:var(--ink-soft);}
 
-  .barchart{width:100%;}
-  .bar-legend{display:flex;gap:16px;justify-content:center;margin-top:10px;font-size:.82rem;color:var(--ink-soft);}
-  .bar-legend span{display:inline-flex;align-items:center;gap:6px;}
-  .bar-legend i{width:11px;height:11px;border-radius:3px;display:inline-block;}
+  .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px;}
+  .stat-tile{background:var(--surface-2);border-radius:8px;padding:9px 11px;}
+  .stat-tile .v{font-family:var(--font-mono);font-weight:600;font-size:1rem;color:var(--ink);}
+  .stat-tile .l{font-size:.76rem;color:var(--ink-soft);margin-top:2px;line-height:1.3;}
 
-  /* ---------- stat grid (war costs) ---------- */
-  .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px;}
-  .stat-tile{background:var(--surface-2);border-radius:8px;padding:10px 12px;}
-  .stat-tile .v{font-family:var(--font-mono);font-weight:600;font-size:1.05rem;color:var(--ink);}
-  .stat-tile .l{font-size:.78rem;color:var(--ink-soft);margin-top:2px;line-height:1.35;}
-
-  /* ---------- reforms list ---------- */
-  .reform{
-    display:flex;flex-wrap:wrap;gap:10px 16px;justify-content:space-between;align-items:flex-start;
-    border:1px solid var(--rule);border-radius:8px;padding:14px 16px;background:var(--surface-2);
-  }
-  .reform + .reform{margin-top:10px;}
-  .reform .who{font-family:var(--font-display);font-weight:700;font-size:1.15rem;}
-  .reform .who span{font-family:var(--font-body);font-weight:400;font-size:.9rem;color:var(--ink-soft);}
-  .reform p{margin:4px 0 0;color:var(--ink-soft);font-size:.92rem;max-width:52ch;line-height:1.5;}
-  .reform .proposal{font-style:italic;color:var(--ink);margin-top:6px;}
-  .badge{
-    flex:none;display:inline-flex;align-items:center;gap:6px;
-    background:var(--danger);color:var(--surface);
-    font-size:.76rem;letter-spacing:.03em;font-weight:600;
-    border-radius:999px;padding:5px 11px;
-  }
-  .badge svg{width:12px;height:12px;}
-
-  /* ---------- obstacle cards (ch IV) ---------- */
-  .obstacle-card{border:1px solid var(--rule);border-radius:8px;padding:14px 16px;background:var(--surface-2);}
-  .obstacle-card + .obstacle-card{margin-top:12px;}
-  .obstacle-card h3{font-family:var(--font-body);font-weight:600;font-size:1rem;margin:0 0 8px;display:flex;align-items:center;gap:8px;color:var(--ink);}
-  .obstacle-card h3 svg{width:16px;height:16px;color:var(--accent-2);flex:none;}
-  .obstacle-card p{margin:0 0 8px;font-size:.92rem;color:var(--ink-soft);line-height:1.55;}
-  .obstacle-card p:last-child{margin-bottom:0;}
-  .estate-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:4px;}
-  .estate-row div{background:var(--surface);border:1px dashed var(--rule);border-radius:6px;padding:8px 10px;font-size:.78rem;color:var(--ink-soft);line-height:1.4;}
-  .estate-row strong{display:block;font-family:var(--font-display);font-size:1.05rem;color:var(--ink);margin-bottom:2px;}
   .dep-grid{display:grid;grid-template-columns:1fr;gap:8px;margin-top:4px;}
-  @media (min-width:560px){.dep-grid{grid-template-columns:1fr 1fr;}}
-  .dep-grid .tile{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:9px 11px;}
-  .dep-grid .tile b{display:block;font-size:.86rem;color:var(--ink);margin-bottom:2px;}
-  .dep-grid .tile span{font-size:.8rem;color:var(--ink-soft);line-height:1.4;}
+  @media (min-width:640px){.dep-grid{grid-template-columns:1fr 1fr 1fr;}}
+  .dep-grid .tile{background:var(--surface-2);border:1px solid var(--rule);border-radius:6px;padding:9px 11px;}
+  .dep-grid .tile b{display:block;font-size:.84rem;color:var(--ink);margin-bottom:2px;}
+  .dep-grid .tile span{font-size:.78rem;color:var(--ink-soft);line-height:1.35;}
 
-  @media (min-width:720px){.obstacles-grid{display:grid;grid-template-columns:1fr;gap:0;}}
-
-  /* ---------- timeline (ch VI) ---------- */
   .timeline{position:relative;margin:6px 0 0;padding-left:26px;}
   .timeline::before{content:"";position:absolute;left:6px;top:4px;bottom:4px;width:2px;background:var(--rule);}
-  .tl-item{position:relative;padding-bottom:20px;}
+  .tl-item{position:relative;padding-bottom:16px;}
   .tl-item:last-child{padding-bottom:0;}
   .tl-item::before{content:"";position:absolute;left:-26px;top:3px;width:10px;height:10px;border-radius:50%;background:var(--accent-2);border:2px solid var(--surface);box-shadow:0 0 0 1px var(--rule);}
-  .tl-date{font-family:var(--font-mono);font-size:.78rem;color:var(--accent-2);letter-spacing:.03em;}
-  .tl-item p{margin:2px 0 0;color:var(--ink);font-size:.94rem;line-height:1.55;}
+  .tl-date{font-family:var(--font-mono);font-size:.76rem;color:var(--accent-2);letter-spacing:.03em;}
+  .tl-item p{margin:2px 0 0;color:var(--ink);font-size:.92rem;line-height:1.5;}
 
-  /* ---------- conclusion buckets (ch VII) ---------- */
-  .bucket{border:1px solid var(--rule);border-radius:8px;padding:14px 16px;background:var(--surface-2);}
-  .bucket+.bucket{margin-top:12px;}
-  .bucket h3{margin:0 0 8px;font-size:1rem;font-family:var(--font-body);font-weight:600;color:var(--ink);}
-  .bucket ul{margin:0;padding-left:18px;color:var(--ink-soft);font-size:.9rem;line-height:1.55;}
-  .bucket ul li+li{margin-top:4px;}
+  .phase-list{display:flex;flex-direction:column;gap:12px;}
+  .phase{border:1px solid var(--rule);border-left:4px solid var(--accent-2);border-radius:8px;padding:13px 15px;background:var(--surface-2);}
+  .phase-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px;margin-bottom:4px;}
+  .phase-head .no{font-family:var(--font-mono);font-size:.76rem;color:var(--accent-2);}
+  .phase-head h3{margin:0;font-family:var(--font-display);font-weight:700;font-size:1.15rem;color:var(--ink);}
+  .phase-head .yr{font-family:var(--font-mono);font-size:.78rem;color:var(--ink-soft);}
+  .phase p{margin:0;font-size:.9rem;color:var(--ink-soft);line-height:1.5;}
 
-  /* ---------- sorting exercise (ch VIII) ---------- */
-  .sort-intro{margin:0 0 16px;color:var(--ink-soft);font-size:.92rem;line-height:1.55;}
-  .sort-list{display:flex;flex-direction:column;gap:10px;}
-  .sort-card{border:1px solid var(--rule);border-left:4px solid var(--rule);border-radius:8px;padding:12px 14px;background:var(--surface-2);}
-  .sort-card .txt{font-size:.92rem;color:var(--ink);line-height:1.45;margin-bottom:8px;}
-  .sort-row{display:flex;flex-wrap:wrap;gap:6px;}
-  .sort-row+.sort-row{margin-top:6px;}
-  .pill-btn{appearance:none;border:1px solid var(--rule);background:var(--surface);color:var(--ink-soft);font-family:var(--font-body);font-size:.78rem;padding:5px 10px;border-radius:999px;cursor:pointer;}
-  .pill-btn.active{background:var(--accent);border-color:var(--accent);color:var(--surface);}
-  .pill-btn.time.active{background:var(--accent-2);border-color:var(--accent-2);}
-  .progress-note{font-family:var(--font-mono);font-size:.78rem;color:var(--ink-soft);}
-  .sort-summary{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;}
-  @media (min-width:720px){.sort-summary{grid-template-columns:repeat(4,1fr);}}
-  .sum-col{border:1px solid var(--rule);border-radius:8px;padding:10px 12px;background:var(--surface);}
-  .sum-col h4{margin:0 0 6px;font-size:.82rem;font-family:var(--font-body);font-weight:600;}
-  .sum-col ul{margin:0;padding-left:16px;font-size:.79rem;color:var(--ink-soft);line-height:1.4;}
-  .sum-col ul li+li{margin-top:3px;}
-  .sum-col .empty{font-size:.78rem;color:var(--ink-soft);font-style:italic;}
-  .reflect{margin-top:24px;padding-top:16px;border-top:1px solid var(--rule);}
-  .rline{display:flex;gap:8px;align-items:center;margin-top:8px;}
-  .rline input[type=text]{flex:1;font-family:var(--font-body);font-size:.88rem;padding:7px 9px;border:1px solid var(--rule);border-radius:6px;background:var(--surface);color:var(--ink);}
-  .rline input[type=text]:focus-visible{outline:2px solid var(--accent-2);outline-offset:1px;}
+  .bucket{border:1px solid var(--rule);border-radius:8px;padding:13px 15px;background:var(--surface-2);}
+  .bucket+.bucket{margin-top:10px;}
+  .bucket h3{margin:0 0 7px;font-size:.98rem;font-family:var(--font-body);font-weight:600;color:var(--ink);}
+  .bucket ul{margin:0;padding-left:18px;color:var(--ink-soft);font-size:.88rem;line-height:1.5;}
+  .bucket ul li+li{margin-top:3px;}
 
-  /* ---------- in-flow chapter nav ---------- */
-  #nav{
-    display:flex;align-items:center;justify-content:center;gap:4px;
-    margin-top:28px;padding-top:18px;
-    border-top:1px solid var(--rule);
-  }
+  #nav{display:flex;align-items:center;justify-content:center;gap:4px;margin-top:24px;padding-top:16px;border-top:1px solid var(--rule);}
   #nav[hidden]{display:none;}
-  #nav button{
-    appearance:none;border:none;background:none;cursor:pointer;
-    width:38px;height:38px;border-radius:50%;
-    display:flex;align-items:center;justify-content:center;
-    color:var(--ink);
-  }
+  #nav button{appearance:none;border:none;background:none;cursor:pointer;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ink);}
   #nav button:hover:not(:disabled){background:var(--surface-2);}
   #nav button:disabled{opacity:.32;cursor:default;}
-  #nav button svg{width:19px;height:19px;}
-  #nav .count{
-    font-family:var(--font-mono);font-size:.82rem;color:var(--ink-soft);
-    min-width:56px;text-align:center;
-  }
+  #nav button svg{width:18px;height:18px;}
+  #nav .count{font-family:var(--font-mono);font-size:.8rem;color:var(--ink-soft);min-width:52px;text-align:center;}
 
   @media (max-width:420px){
-    section{padding:44px 14px 34px;}
-    .chapter-head{gap:12px;}
-    .chapter-icon{width:40px;height:40px;}
-    .chapter-icon svg{width:20px;height:20px;}
-    .estate-row{grid-template-columns:1fr;}
+    section{padding:40px 14px 30px;}
+    .chapter-head{gap:11px;}
+    .chapter-icon{width:38px;height:38px;}
+    .chapter-icon svg{width:19px;height:19px;}
     .stat-grid{grid-template-columns:1fr;}
   }
 </style>
@@ -322,51 +151,47 @@
       <div class="seal">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.6"/><circle cx="12" cy="12" r="6" stroke-dasharray="1.1 2"/><text x="12" y="15.8" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="9.5" stroke="none" fill="currentColor">L</text></svg>
       </div>
-      <p class="kicker">Frankrike &middot; 1774&ndash;1789</p>
-      <h1>Livrens<br>bankrutt</h1>
+      <p class="kicker">Frankrike &middot; 1789&ndash;1799</p>
+      <h1>Revolutionen<br>i korthet</h1>
       <hr class="rule">
-      <p class="lede">Varf&ouml;r kunde inte Ludvig XVI helt enkelt h&ouml;ja skatterna och r&auml;dda statskassan? Sju kapitel om st&aring;ndssamh&auml;llet, skattebördan, skulden, maktens gränser och v&auml;gen till 1789 &ndash; plus en &ouml;vning d&auml;r du sorterar orsakerna sj&auml;lv.</p>
+      <p class="lede">Snabbversionen: fr&aring;n en stat i konkurs och ett or&auml;ttvist skattesystem &ndash; via Bastiljens fall &ndash; genom revolutionens fem faser fram till Napoleon.</p>
       <div class="tags">
-        <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c0-3.3 2.6-5.4 5.9-5.4"/><circle cx="16.5" cy="9.5" r="2.4"/><path d="M13.8 19c.3-2.6 2.1-4.1 4.6-4.3"/></svg>Ständerna</span>
-        <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="9" cy="8.5" rx="5.5" ry="3.6"/><ellipse cx="15" cy="14.5" rx="5.5" ry="3.6"/></svg>Skatterna</span>
-        <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16M4 8v8M20 8v8"/><path d="M4 16h16"/><path d="M9 16V8M15 16V8"/></svg>Statsskulden</span>
-        <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14"/><path d="M5 7l-2.2 6a2.6 2.6 0 005.2 0z"/><path d="M19 7l-2.2 6a2.6 2.6 0 005.2 0z"/></svg>Maktens gränser</span>
-        <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v18"/><path d="M6 4h11l-3 4 3 4H6"/></svg>Revolutionen</span>
-        <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1"/><rect x="13.5" y="3.5" width="7" height="7" rx="1"/><rect x="3.5" y="13.5" width="7" height="7" rx="1"/><rect x="13.5" y="13.5" width="7" height="7" rx="1"/></svg>Öva</span>
+        <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="9" cy="8.5" rx="5.5" ry="3.6"/><ellipse cx="15" cy="14.5" rx="5.5" ry="3.6"/></svg>Kris & skuld</span>
+        <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14"/><path d="M5 7l-2.2 6a2.6 2.6 0 005.2 0z"/><path d="M19 7l-2.2 6a2.6 2.6 0 005.2 0z"/></svg>L&aring;st system</span>
+        <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v18"/><path d="M6 4h11l-3 4 3 4H6"/></svg>1789</span>
+        <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg>Faserna</span>
       </div>
       <button class="cta" id="start-btn" type="button">
-        B&ouml;rja genoml&auml;sningen
+        B&ouml;rja
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
       </button>
-      <div class="worksheets">
-        <span>Arbetsblad:</span>
-        <a href="worksheets/Begreppslista.pdf" target="_blank" rel="noopener">Begreppslista</a>
-        <a href="worksheets/Orsakslappar.pdf" target="_blank" rel="noopener">Orsakslappar</a>
-        <a href="worksheets/Sorteringsunderlag_liggande.pdf" target="_blank" rel="noopener">Sorteringsunderlag</a>
-      </div>
-      <p class="worksheets"><a href="kort.html">Se den f&ouml;rkortade snabbversionen &rarr;</a></p>
+      <p class="altlink">Vill du ha hela genoml&auml;sningen med reformf&ouml;rs&ouml;k, &ouml;vning och k&auml;llor? <a href="full.html">Se den fullst&auml;ndiga versionen &rarr;</a></p>
     </div>
   </section>
 
   <section class="chapter" id="ch-0" hidden>
     <div class="frame">
       <div class="chapter-head">
-        <div class="chapter-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c0-3.3 2.6-5.4 5.9-5.4"/><circle cx="16.5" cy="9.5" r="2.4"/><path d="M13.8 19c.3-2.6 2.1-4.1 4.6-4.3"/></svg></div>
+        <div class="chapter-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="9" cy="8.5" rx="5.5" ry="3.6"/><ellipse cx="15" cy="14.5" rx="5.5" ry="3.6"/></svg></div>
         <div>
           <p class="eyebrow">Kapitel I</p>
-          <h2>St&aring;ndssamh&auml;llet</h2>
+          <h2>Ett rike i kris</h2>
         </div>
       </div>
       <div class="grid2">
         <div class="chart-wrap" id="chart-population"></div>
         <div class="prose">
-          <p>Frankrikes befolkning delades in i tre st&aring;nd. <strong>Tredje st&aring;ndet</strong> &ndash; b&ouml;nder, hantverkare och borgerskap &ndash; utgjorde 98&nbsp;% av alla inv&aring;nare men hade n&auml;stan ingen politisk makt.</p>
-          <p><strong>Adeln</strong> (1,5&nbsp;%) och <strong>pr&auml;sterskapet</strong> (0,5&nbsp;%) &auml;gde tillsammans en stor del av jorden och hade dessutom <strong>vetor&auml;tt</strong> mot nya skatter &ndash; en r&auml;tt de aldrig gav upp frivilligt.</p>
-          <div class="callout">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4"/><circle cx="12" cy="16.4" r=".4" fill="currentColor" stroke="none"/><path d="M10.3 4.6L2.7 18a2 2 0 001.8 3h15a2 2 0 001.8-3L13.7 4.6a2 2 0 00-3.4 0z"/></svg>
-            <span>Skattebördan l&aring;g allts&aring; n&auml;stan uteslutande p&aring; den grupp som hade minst resurser att b&auml;ra den.</span>
-          </div>
+          <p><strong>Tredje st&aring;ndet</strong> (98&nbsp;% av befolkningen) betalade n&auml;stan alla skatter. <strong>Adeln</strong> och <strong>pr&auml;sterskapet</strong> var skattefria och hade vetor&auml;tt mot nya skatter.</p>
+          <p>Tv&aring; dyra krig och ett hov med stora utgifter drev upp statsskulden &aring;r efter &aring;r.</p>
         </div>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-tile"><div class="v mono">8 mdr livre</div><div class="l">statsskuld 1789 &ndash; 4&times; &aring;rsinkomsterna</div></div>
+        <div class="stat-tile"><div class="v mono">~50 %</div><div class="l">av inkomsterna gick till r&auml;ntor p&aring; skulden</div></div>
+      </div>
+      <div class="callout" style="margin-top:16px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4"/><circle cx="12" cy="16.4" r=".4" fill="currentColor" stroke="none"/><path d="M10.3 4.6L2.7 18a2 2 0 001.8 3h15a2 2 0 001.8-3L13.7 4.6a2 2 0 00-3.4 0z"/></svg>
+        <span>Staten var i praktiken bankrutt &ndash; men de som hade r&aring;d att betala mer var samma grupper som vägrade.</span>
       </div>
     </div>
   </section>
@@ -374,23 +199,23 @@
   <section class="chapter" id="ch-1" hidden>
     <div class="frame">
       <div class="chapter-head">
-        <div class="chapter-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="9" cy="8.5" rx="5.5" ry="3.6"/><ellipse cx="15" cy="14.5" rx="5.5" ry="3.6"/></svg></div>
+        <div class="chapter-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14"/><path d="M5 7l-2.2 6a2.6 2.6 0 005.2 0z"/><path d="M19 7l-2.2 6a2.6 2.6 0 005.2 0z"/></svg></div>
         <div>
           <p class="eyebrow">Kapitel II</p>
-          <h2>Vem betalade skatten?</h2>
+          <h2>Varf&ouml;r hj&auml;lpte ingen till?</h2>
         </div>
       </div>
-      <div class="grid2">
-        <div class="chart-wrap" id="chart-taxes"></div>
-        <div class="prose">
-          <p><strong>Taille</strong> var den personliga skatten p&aring; b&ouml;nder och deras egendom &ndash; adeln och pr&auml;sterskapet var undantagna.</p>
-          <p><strong>Gabelle</strong> var en tvingande monopolskatt p&aring; salt, en nödv&auml;ndighetsvara, och <strong>d&icirc;me</strong> gick till kyrkan trots att kyrkan sj&auml;lv knappt betalade skatt.</p>
-          <p><strong>Corv&eacute;e</strong> var obetalt tv&aring;ngsarbete p&aring; v&auml;gar och broar &ndash; ytterligare en b&ouml;rda som f&ouml;ll p&aring; tredje st&aring;ndet.</p>
-          <div class="callout">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4"/><circle cx="12" cy="16.4" r=".4" fill="currentColor" stroke="none"/><path d="M10.3 4.6L2.7 18a2 2 0 001.8 3h15a2 2 0 001.8-3L13.7 4.6a2 2 0 00-3.4 0z"/></svg>
-            <span>98&nbsp;% av befolkningen betalade i praktiken n&auml;stan 98&nbsp;% av skatterna &ndash; adel och pr&auml;ster bidrog bara med sm&aring; frivilliga g&aring;vor.</span>
-          </div>
-        </div>
+      <div class="dep-grid">
+        <div class="tile"><b>St&aring;ndens veto</b><span>Adel och pr&auml;ster kunde blockera skatter som drabbade dem sj&auml;lva.</span></div>
+        <div class="tile"><b>Parlementen</b><span>Domstolarna vägrade registrera nya skattelagar.</span></div>
+        <div class="tile"><b>Kungens beroende</b><span>Ludvig XVI beh&ouml;vde adelns milit&auml;ra och ekonomiska st&ouml;d.</span></div>
+      </div>
+      <div class="prose" style="margin-top:16px;">
+        <p>Fyra finansministrar &ndash; <strong>Turgot, Necker, Calonne</strong> och <strong>Brienne</strong> &ndash; f&ouml;rs&ouml;kte 1774&ndash;1788 reformera skattesystemet. Alla fyra avsattes n&auml;r adeln motsatte sig f&ouml;rlusten av sina privilegier.</p>
+      </div>
+      <div class="callout">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4"/><circle cx="12" cy="16.4" r=".4" fill="currentColor" stroke="none"/><path d="M10.3 4.6L2.7 18a2 2 0 001.8 3h15a2 2 0 001.8-3L13.7 4.6a2 2 0 00-3.4 0z"/></svg>
+        <span>Systemet var l&aring;st: varje l&ouml;sning krävde att n&aring;gon med makt gav upp sina privilegier &ndash; och det gjorde ingen frivilligt.</span>
       </div>
     </div>
   </section>
@@ -398,26 +223,19 @@
   <section class="chapter" id="ch-2" hidden>
     <div class="frame">
       <div class="chapter-head">
-        <div class="chapter-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16M4 8v8M20 8v8M4 16h16M9 16V8M15 16V8"/></svg></div>
+        <div class="chapter-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v18"/><path d="M6 4h11l-3 4 3 4H6"/></svg></div>
         <div>
           <p class="eyebrow">Kapitel III</p>
-          <h2>Skulden v&auml;xer</h2>
+          <h2>1789: Gnistan t&auml;nds</h2>
         </div>
       </div>
-      <div class="barchart" id="chart-debt"></div>
-      <div class="bar-legend">
-        <span><i style="background:var(--danger)"></i>Statsskuld</span>
-        <span><i style="background:var(--accent)"></i>Statsinkomster</span>
-      </div>
-      <div class="stat-grid">
-        <div class="stat-tile"><div class="v mono">1,3 mdr livre</div><div class="l">Sjuårskriget (1756&ndash;1763)</div></div>
-        <div class="stat-tile"><div class="v mono">1,1 mdr livre</div><div class="l">Amerikanska frihetskriget (1775&ndash;1783)</div></div>
-        <div class="stat-tile"><div class="v mono">~10 %</div><div class="l">av statsbudgeten gick till hovets uppeh&auml;lle</div></div>
-        <div class="stat-tile"><div class="v mono">~50 %</div><div class="l">av inkomsterna gick 1789 enbart till r&auml;ntor p&aring; skulden</div></div>
-      </div>
-      <div class="callout" style="margin-top:18px;">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20L19 6M5 6l14 14"/></svg>
-        <span>Tv&aring; kostsamma krig gjorde att skulden 1789 var mer &auml;n fyra g&aring;nger s&aring; stor som de &aring;rliga statsinkomsterna &ndash; och h&auml;lften av det som kom in gick direkt till r&auml;ntor.</span>
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-date mono">1788</div><p>Missv&auml;xt ger br&ouml;dbrist och skenande priser &ndash; samtidigt som statskassan &auml;r tom.</p></div>
+        <div class="tl-item"><div class="tl-date mono">Maj 1789</div><p>St&auml;nderf&ouml;rsamlingen kallas samman f&ouml;r f&ouml;rsta g&aring;ngen sedan 1614. Tredje st&aring;ndet protesterar mot r&ouml;stes&auml;ttet.</p></div>
+        <div class="tl-item"><div class="tl-date mono">17 juni</div><p>Tredje st&aring;ndet utropar sig till Nationalf&ouml;rsamling.</p></div>
+        <div class="tl-item"><div class="tl-date mono">14 juli</div><p>Bastiljen stormas &ndash; revolutionens startskott.</p></div>
+        <div class="tl-item"><div class="tl-date mono">26 aug</div><p>F&ouml;rklaringen om m&auml;nniskans och medborgarens r&auml;ttigheter antas.</p></div>
+        <div class="tl-item"><div class="tl-date mono">Okt 1789</div><p>Kvinnomarschen till Versailles tvingar kungafamiljen till Paris.</p></div>
       </div>
     </div>
   </section>
@@ -425,35 +243,32 @@
   <section class="chapter" id="ch-3" hidden>
     <div class="frame">
       <div class="chapter-head">
-        <div class="chapter-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14"/><path d="M5 7l-2.2 6a2.6 2.6 0 005.2 0z"/><path d="M19 7l-2.2 6a2.6 2.6 0 005.2 0z"/></svg></div>
+        <div class="chapter-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg></div>
         <div>
           <p class="eyebrow">Kapitel IV</p>
-          <h2>Varf&ouml;r kunde kungen inte agera sj&auml;lv?</h2>
+          <h2>Revolutionens fem faser</h2>
         </div>
       </div>
-
-      <div class="obstacle-card">
-        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c0-3.3 2.6-5.4 5.9-5.4"/><circle cx="16.5" cy="9.5" r="2.4"/><path d="M13.8 19c.3-2.6 2.1-4.1 4.6-4.3"/></svg>1. St&aring;ndssamh&auml;llets vetor&auml;tt</h3>
-        <p>De tv&aring; f&ouml;rsta st&aring;nden kunde blockera nya skatter som drabbade dem sj&auml;lva.</p>
-        <div class="estate-row">
-          <div><strong>Pr&auml;ster</strong>0,5&nbsp;% av befolkningen &middot; skattefria &middot; kontrollerade kyrkan</div>
-          <div><strong>Adel</strong>1,5&nbsp;% av befolkningen &middot; skattefria &middot; kontrollerade milit&auml;r och domstolar</div>
-          <div><strong>Tredje st&aring;ndet</strong>98&nbsp;% av befolkningen &middot; betalade alla skatter &middot; ingen politisk makt</div>
+      <div class="phase-list">
+        <div class="phase">
+          <div class="phase-head"><span class="no mono">Fas 1</span><h3>Den konstitutionella monarkin</h3><span class="yr mono">1789&ndash;1792</span></div>
+          <p>Nationalf&ouml;rsamlingen avskaffar de feodala privilegierna (natten till 4 aug 1789) och antar en ny konstitution 1791: Frankrike blir en konstitutionell monarki d&auml;r kungen delar makten med en vald f&ouml;rsamling.</p>
         </div>
-      </div>
-
-      <div class="obstacle-card">
-        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l4 4v14H7z"/><path d="M9 12h6M9 16h6M9 8h3"/></svg>2. Parlementens makt</h3>
-        <p>Frankrikes 13 regionala parlement (h&ouml;gsta domstolar) hade r&auml;tt att granska och blockera kungliga dekret. 1787 stoppade parlementet i Paris en f&ouml;reslagen st&auml;mpelskatt och kr&auml;vde ist&auml;llet att St&auml;nderf&ouml;rsamlingen kallades samman.</p>
-      </div>
-
-      <div class="obstacle-card">
-        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20L19 6M5 6l14 14"/></svg>3. Kungens beroende av adeln</h3>
-        <div class="dep-grid">
-          <div class="tile"><b>Milit&auml;r kontroll</b><span>Officerare rekryterades n&auml;stan uteslutande fr&aring;n adeln.</span></div>
-          <div class="tile"><b>Lokal f&ouml;rvaltning</b><span>Adeln sk&ouml;tte skatteindrivningen lokalt &ndash; utan dem uteblev intäkterna.</span></div>
-          <div class="tile"><b>Social legitimitet</b><span>Kungamaktens auktoritet vilade p&aring; adelns st&ouml;d vid hovet.</span></div>
-          <div class="tile"><b>Ekonomisk makt</b><span>Adelns jordegendomar gav dem inflytande &ouml;ver hela ekonomin.</span></div>
+        <div class="phase">
+          <div class="phase-head"><span class="no mono">Fas 2</span><h3>Krig och monarkins fall</h3><span class="yr mono">1791&ndash;1792</span></div>
+          <p>Ludvig XVI f&ouml;rs&ouml;ker fly landet men grips i Varennes 1791. Frankrike g&aring;r i krig mot &Ouml;sterrike och Preussen 1792, och upproriska folkmassor stormar kungapalatset Tuilerierna &ndash; monarkin avskaffas.</p>
+        </div>
+        <div class="phase">
+          <div class="phase-head"><span class="no mono">Fas 3</span><h3>Republiken och Terrorn</h3><span class="yr mono">1792&ndash;1794</span></div>
+          <p>Nationalkonventet utropar republiken. Ludvig XVI avr&auml;ttas i januari 1793. Robespierre och V&auml;lf&auml;rdsutskottet inleder <strong>Terrorn</strong> &ndash; tiotusentals f&ouml;rklaras fiender till revolutionen och avr&auml;ttas i giljotinen &ndash; till dess Robespierre sj&auml;lv avr&auml;ttas i juli 1794.</p>
+        </div>
+        <div class="phase">
+          <div class="phase-head"><span class="no mono">Fas 4</span><h3>Direktoriet</h3><span class="yr mono">1795&ndash;1799</span></div>
+          <p>En svag femmannaregering styr under fortsatt krig, ekonomisk kris och &aring;terkommande kupp­f&ouml;rs&ouml;k fr&aring;n b&aring;de royalister och radikaler.</p>
+        </div>
+        <div class="phase">
+          <div class="phase-head"><span class="no mono">Fas 5</span><h3>Napoleon tar makten</h3><span class="yr mono">1799</span></div>
+          <p>Genom statskuppen den 18 brumaire (9 nov 1799) gör general Napoleon Bonaparte slut p&aring; Direktoriet och utropar sig till f&ouml;rste konsul &ndash; revolutionen &auml;r &ouml;ver.</p>
         </div>
       </div>
     </div>
@@ -462,97 +277,27 @@
   <section class="chapter" id="ch-4" hidden>
     <div class="frame">
       <div class="chapter-head">
-        <div class="chapter-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8l6 6 4-4 6 7"/><path d="M15 17h5v-5"/></svg></div>
-        <div>
-          <p class="eyebrow">Kapitel V</p>
-          <h2>Reformerna som f&ouml;ll</h2>
-        </div>
-      </div>
-      <div id="reform-list"></div>
-      <div class="callout" style="margin-top:16px;">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4"/><circle cx="12" cy="16.4" r=".4" fill="currentColor" stroke="none"/><path d="M10.3 4.6L2.7 18a2 2 0 001.8 3h15a2 2 0 001.8-3L13.7 4.6a2 2 0 00-3.4 0z"/></svg>
-        <span>Gemensam n&auml;mnare: adeln och pr&auml;sterna v&auml;grade ge upp sina privilegier, parlementen blockerade, och kungen saknade b&aring;de milit&auml;rt st&ouml;d och en genv&auml;g f&ouml;rbi ständernas godk&auml;nnande.</span>
-      </div>
-    </div>
-  </section>
-
-  <section class="chapter" id="ch-5" hidden>
-    <div class="frame">
-      <div class="chapter-head">
-        <div class="chapter-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v18"/><path d="M6 4h11l-3 4 3 4H6"/></svg></div>
-        <div>
-          <p class="eyebrow">Kapitel VI</p>
-          <h2>V&auml;gen till revolutionen</h2>
-        </div>
-      </div>
-      <div class="timeline">
-        <div class="tl-item"><div class="tl-date mono">1788</div><p>Missv&auml;xt ger br&ouml;dbrist &ndash; br&ouml;dpriset stiger med omkring 88&nbsp;%, samtidigt som statskassan i praktiken &auml;r tom.</p></div>
-        <div class="tl-item"><div class="tl-date mono">Maj 1789</div><p>Ludvig XVI kallar till St&auml;nderf&ouml;rsamlingen f&ouml;r f&ouml;rsta g&aring;ngen sedan 1614. Tredje st&aring;ndet protesterar mot r&ouml;stes&auml;ttet &ndash; varje st&aring;nd har bara en r&ouml;st, s&aring; adeln och pr&auml;sterskapet kan alltid r&ouml;sta ned dem &auml;ndå.</p></div>
-        <div class="tl-item"><div class="tl-date mono">17 juni 1789</div><p>Tredje st&aring;ndet utropar sig sj&auml;lvt till Nationalf&ouml;rsamling.</p></div>
-        <div class="tl-item"><div class="tl-date mono">20 juni 1789</div><p>Bollhuseden &ndash; Nationalf&ouml;rsamlingen sv&auml;r att inte skiljas &aring;t f&ouml;rr&auml;n Frankrike f&aring;tt en ny f&ouml;rfattning.</p></div>
-        <div class="tl-item"><div class="tl-date mono">14 juli 1789</div><p>Bastiljen stormas &ndash; franska revolutionen &auml;r ig&aring;ng.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="chapter" id="ch-6" hidden>
-    <div class="frame">
-      <div class="chapter-head">
         <div class="chapter-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.6"/><circle cx="12" cy="12" r="6" stroke-dasharray="1.1 2"/><text x="12" y="15.8" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="9.5" stroke="none" fill="currentColor">L</text></svg></div>
         <div>
-          <p class="eyebrow">Kapitel VII</p>
+          <p class="eyebrow">Kapitel V</p>
           <h2>Slutsats</h2>
         </div>
       </div>
-
       <div class="bucket">
-        <h3>Finansiella orsaker</h3>
+        <h3>Orsaker</h3>
         <ul>
-          <li>Dyra krig &ndash; Sjuårskriget och det amerikanska frihetskriget</li>
-          <li>Ett ineffektivt skattesystem med orättvis fördelning</li>
-          <li>En statsskuld på cirka 8 miljarder livre</li>
-          <li>Omkring hälften av inkomsterna gick till räntor på skulden</li>
-        </ul>
-      </div>
-      <div class="bucket">
-        <h3>Politiska hinder</h3>
-        <ul>
-          <li>Adel och präster var skattefria och hade vetorätt</li>
-          <li>Parlementen blockerade skattehöjningar</li>
-          <li>Ständerförsamlingen krävdes för nya skatter, men hade inte sammanträtt sedan 1614</li>
-          <li>Kungen var beroende av adelns militära, ekonomiska och sociala stöd</li>
+          <li>Statsbankrutt efter dyra krig och ett or&auml;ttvist skattesystem</li>
+          <li>Adeln och pr&auml;sterna blockerade varje reform som ho­tade deras privilegier</li>
+          <li>Missv&auml;xt och br&ouml;dbrist 1788&ndash;89 gjorde l&auml;get akut</li>
         </ul>
       </div>
       <div class="bucket">
         <h3>Konsekvenser</h3>
         <ul>
-          <li>Ekonomisk kollaps 1788&ndash;1789</li>
-          <li>Ständerförsamlingen sammankallas (maj 1789)</li>
-          <li>Nationalförsamlingen bildas (juni 1789)</li>
-          <li>Bastiljen stormas (14 juli 1789) &ndash; revolutionen börjar</li>
+          <li>Env&auml;ldet och st&aring;ndssamh&auml;llet avskaffas</li>
+          <li>M&auml;nniskors r&auml;ttigheter slås fast i lag f&ouml;r f&ouml;rsta g&aring;ngen</li>
+          <li>Efter republik och Terror tar Napoleon makten 1799 &ndash; och formar Frankrike och Europa under &aring;rtionden framåt</li>
         </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="chapter" id="ch-7" hidden>
-    <div class="frame">
-      <div class="chapter-head">
-        <div class="chapter-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1"/><rect x="13.5" y="3.5" width="7" height="7" rx="1"/><rect x="3.5" y="13.5" width="7" height="7" rx="1"/><rect x="13.5" y="13.5" width="7" height="7" rx="1"/></svg></div>
-        <div>
-          <p class="eyebrow">Övning</p>
-          <h2>Sortera orsakerna sj&auml;lv</h2>
-        </div>
-      </div>
-      <p class="sort-intro">Samma 16 orsaker som p&aring; papperslapparna &ndash; men h&auml;r sorterar du dem direkt. F&ouml;r varje orsak: v&auml;lj kategori och om den var l&aring;ngsiktig eller utl&ouml;sande. Vissa passar i flera kategorier &ndash; v&auml;lj den du tycker passar b&auml;st. Dina val sparas i den h&auml;r webbl&auml;saren.</p>
-
-      <div id="sort-list" class="sort-list"></div>
-      <p class="progress-note" id="sort-progress"></p>
-      <div id="sort-summary" class="sort-summary"></div>
-
-      <div class="reflect">
-        <p class="eyebrow" style="margin-top:0;">Vilka tre orsaker var viktigast?</p>
-        <div id="reflect-lines"></div>
       </div>
     </div>
   </section>
@@ -566,7 +311,7 @@
   <button id="nav-prev" type="button" aria-label="F&ouml;reg&aring;ende kapitel">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
   </button>
-  <span class="count mono" id="nav-count">I / VII</span>
+  <span class="count mono" id="nav-count">I / V</span>
   <button id="nav-next" type="button" aria-label="N&auml;sta kapitel">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
   </button>
@@ -585,28 +330,6 @@
     { name: "Prästerskapet", value: 0.5, color: tok('--accent-2') }
   ];
 
-  var taxes = [
-    { name: "Taille (bönder)", value: 40, color: tok('--accent') },
-    { name: "Gabelle (salt)", value: 20, color: tok('--chart-teal') },
-    { name: "Dîme (kyrkan)", value: 15, color: tok('--accent-2') },
-    { name: "Corvée (tvångsarbete)", value: 10, color: tok('--danger') },
-    { name: "Övrigt", value: 15, color: tok('--ink-soft') }
-  ];
-
-  var debt = [
-    { year: "1715", skuld: 4, inkomster: 1 },
-    { year: "1750", skuld: 6, inkomster: 1.2 },
-    { year: "1770", skuld: 7, inkomster: 1.5 },
-    { year: "1789", skuld: 8, inkomster: 1.8 }
-  ];
-
-  var reforms = [
-    { name: "Turgot", years: "1774–1776", proposal: "Föreslog att avskaffa corvée och adelns skattefrihet, samt inför frihandel med spannmål.", note: "Avskedades efter påtryckningar från adeln och drottningen." },
-    { name: "Necker", years: "1776–1781", proposal: "Offentliggjorde statens finanser (Compte rendu) för att minska korruption.", note: "Tvingades avgå när adeln och hovet reagerade på öppenheten." },
-    { name: "Calonne", years: "1783–1787", proposal: "Föreslog en enhetlig markskatt (impôt territorial) som skulle omfatta även adel och präster.", note: "Notabelförsamlingen och adeln vägrade godkänna den." },
-    { name: "Brienne", years: "1787–1788", proposal: "Försökte driva igenom en stämpelskatt (timbre) och Calonnes reformer.", note: "Parlementet i Paris blockerade och krävde att ständerna sammankallades." }
-  ];
-
   function svg(tag, attrs){
     var el = document.createElementNS("http://www.w3.org/2000/svg", tag);
     for (var k in attrs) el.setAttribute(k, attrs[k]);
@@ -616,10 +339,10 @@
   function renderDonut(containerId, data){
     var container = document.getElementById(containerId);
     if (!container) return;
-    var size = 220, r = 78, cx = size/2, cy = size/2, sw = 30;
+    var size = 200, r = 70, cx = size/2, cy = size/2, sw = 28;
     var total = data.reduce(function(s,d){ return s + d.value; }, 0);
     var circumference = 2 * Math.PI * r;
-    var s = svg("svg", { viewBox: "0 0 " + size + " " + size, width: size, height: size, role: "img", "aria-label": "Cirkeldiagram" });
+    var s = svg("svg", { viewBox: "0 0 " + size + " " + size, width: size, height: size, role: "img", "aria-label": "Cirkeldiagram över ståndssamhället" });
     var g = svg("g", { transform: "rotate(-90 " + cx + " " + cy + ")" });
     var cumulative = 0;
     data.forEach(function(d){
@@ -638,10 +361,10 @@
       cumulative += d.value;
     });
     s.appendChild(g);
-    var label = svg("text", { x: cx, y: cy - 3, "text-anchor": "middle", fill: tok('--ink'), "font-family": "var(--font-display)", "font-weight": "700", "font-size": "26" });
+    var label = svg("text", { x: cx, y: cy - 3, "text-anchor": "middle", fill: tok('--ink'), "font-family": "var(--font-display)", "font-weight": "700", "font-size": "24" });
     label.textContent = data[0].value + "%";
-    var sub = svg("text", { x: cx, y: cy + 16, "text-anchor": "middle", fill: tok('--ink-soft'), "font-family": "var(--font-mono)", "font-size": "9" });
-    sub.textContent = "Största andelen";
+    var sub = svg("text", { x: cx, y: cy + 15, "text-anchor": "middle", fill: tok('--ink-soft'), "font-family": "var(--font-mono)", "font-size": "8.5" });
+    sub.textContent = "Tredje ståndet";
     s.appendChild(label);
     s.appendChild(sub);
 
@@ -667,193 +390,11 @@
     container.appendChild(legend);
   }
 
-  function renderBars(containerId, data){
-    var container = document.getElementById(containerId);
-    if (!container) return;
-    var w = 560, h = 260, padL = 34, padB = 26, padT = 12, padR = 10;
-    var plotW = w - padL - padR, plotH = h - padT - padB;
-    var maxVal = 10;
-    var groups = data.length;
-    var groupW = plotW / groups;
-    var barW = groupW * 0.28;
-
-    var s = svg("svg", { viewBox: "0 0 " + w + " " + h, width: "100%", height: "auto", role: "img", "aria-label": "Stapeldiagram över statsskuld och statsinkomster" });
-
-    [0,2.5,5,7.5,10].forEach(function(v){
-      var y = padT + plotH - (v/maxVal)*plotH;
-      s.appendChild(svg("line", { x1: padL, x2: w - padR, y1: y, y2: y, stroke: tok('--rule'), "stroke-width": 1 }));
-      var t = svg("text", { x: padL - 8, y: y + 3, "text-anchor": "end", fill: tok('--ink-soft'), "font-family": "var(--font-mono)", "font-size": "9" });
-      t.textContent = v;
-      s.appendChild(t);
-    });
-
-    data.forEach(function(d, i){
-      var groupX = padL + i * groupW;
-      var barSkuld = (d.skuld/maxVal) * plotH;
-      var barInk = (d.inkomster/maxVal) * plotH;
-      var x1 = groupX + groupW*0.22;
-      var x2 = groupX + groupW*0.52;
-
-      var r1 = svg("rect", { x: x1, y: padT + plotH - barSkuld, width: barW, height: barSkuld, fill: tok('--danger'), rx: 2 });
-      var t1 = svg("title", {}); t1.textContent = d.year + " – skuld: " + d.skuld + " mdr livres"; r1.appendChild(t1);
-      s.appendChild(r1);
-
-      var r2 = svg("rect", { x: x2, y: padT + plotH - barInk, width: barW, height: barInk, fill: tok('--accent'), rx: 2 });
-      var t2 = svg("title", {}); t2.textContent = d.year + " – inkomster: " + d.inkomster + " mdr livres"; r2.appendChild(t2);
-      s.appendChild(r2);
-
-      var lbl = svg("text", { x: groupX + groupW/2, y: h - 6, "text-anchor": "middle", fill: tok('--ink-soft'), "font-family": "var(--font-mono)", "font-size": "10" });
-      lbl.textContent = d.year;
-      s.appendChild(lbl);
-    });
-
-    s.appendChild(svg("line", { x1: padL, x2: padL, y1: padT, y2: padT + plotH, stroke: tok('--rule'), "stroke-width": 1 }));
-
-    container.innerHTML = "";
-    container.appendChild(s);
-  }
-
-  function renderReforms(containerId, data){
-    var container = document.getElementById(containerId);
-    if (!container) return;
-    container.innerHTML = "";
-    data.forEach(function(r){
-      var row = document.createElement("div");
-      row.className = "reform";
-      row.innerHTML =
-        '<div><p class="who">' + r.name + ' <span>(' + r.years + ')</span></p>' +
-        '<p class="proposal">' + r.proposal + '</p>' +
-        '<p>' + r.note + '</p></div>' +
-        '<span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8l6 6 4-4 6 7"/><path d="M15 17h5v-5"/></svg>Misslyckades</span>';
-      container.appendChild(row);
-    });
-  }
-
   renderDonut("chart-population", population);
-  renderDonut("chart-taxes", taxes);
-  renderBars("chart-debt", debt);
-  renderReforms("reform-list", reforms);
 
-  // ---- sorting exercise ----
-  var causesEx = [
-    "Skördarna slog fel flera år i rad och det blev brist på mat.",
-    "Priserna på varor steg mycket mer än lönerna.",
-    "Staten hade större utgifter än inkomster.",
-    "Adeln och prästerna slapp betala skatt.",
-    "Kriget i Nordamerika hade kostat Frankrike mycket pengar.",
-    "Upplysningsfilosofer krävde förnuft, frihet och tolerans.",
-    "Franska soldater hade sett i USA att ett nytt slags samhälle var möjligt.",
-    "Bara adeln fick ha de högsta tjänsterna i staten.",
-    "Köpmän och advokater krävde mer inflytande.",
-    "Kvinnor, egendomslösa och arbetare saknade politiskt inflytande.",
-    "Den industriella utvecklingen gick långsamt.",
-    "Kungen var enväldig men behövde parlamentets ja till nya skatter.",
-    "Kungen kallade generalständerna till möte i maj 1789.",
-    "Varje stånd hade en röst, så tredje ståndet kunde alltid röstas ned.",
-    "Tredje ståndet bildade nationalförsamlingen och svor eden i bollhuset.",
-    "Folkmassor stormade Bastiljen den 14 juli 1789."
-  ];
-  var catKeys = ["eko","pol","soc","ide"];
-  var catLabels = { eko: "Ekonomisk", pol: "Politisk", soc: "Social", ide: "Idémässig" };
-  var catColor = { eko: "--accent", pol: "--accent-2", soc: "--danger", ide: "--chart-teal" };
-
-  function loadSortState(){
-    try{
-      var raw = localStorage.getItem("livrens-bankrutt-sortering-v1");
-      if (raw) return JSON.parse(raw);
-    }catch(e){}
-    return { cat: {}, time: {}, reflect: ["", "", ""] };
-  }
-  var sortState = loadSortState();
-  function saveSortState(){
-    try{ localStorage.setItem("livrens-bankrutt-sortering-v1", JSON.stringify(sortState)); }catch(e){}
-  }
-
-  function renderSortList(){
-    var container = document.getElementById("sort-list");
-    if (!container) return;
-    container.innerHTML = causesEx.map(function(text, i){
-      var catBtns = catKeys.map(function(k){
-        return '<button type="button" class="pill-btn" data-role="cat" data-i="' + i + '" data-k="' + k + '">' + catLabels[k] + "</button>";
-      }).join("");
-      return '<div class="sort-card" id="sc-' + i + '">' +
-        '<div class="txt"><strong>' + (i + 1) + ".</strong> " + text + "</div>" +
-        '<div class="sort-row">' + catBtns + "</div>" +
-        '<div class="sort-row">' +
-        '<button type="button" class="pill-btn time" data-role="time" data-i="' + i + '" data-k="l">Långsiktig</button>' +
-        '<button type="button" class="pill-btn time" data-role="time" data-i="' + i + '" data-k="u">Utlösande</button>' +
-        "</div></div>";
-    }).join("");
-
-    container.addEventListener("click", function(e){
-      var btn = e.target.closest(".pill-btn");
-      if (!btn) return;
-      var i = btn.getAttribute("data-i");
-      var k = btn.getAttribute("data-k");
-      var role = btn.getAttribute("data-role");
-      if (role === "cat") sortState.cat[i] = (sortState.cat[i] === k) ? null : k;
-      else sortState.time[i] = (sortState.time[i] === k) ? null : k;
-      saveSortState();
-      refreshSorter();
-    });
-  }
-
-  function refreshSorter(){
-    causesEx.forEach(function(_, i){
-      var card = document.getElementById("sc-" + i);
-      if (!card) return;
-      var chosenCat = sortState.cat[i];
-      card.style.borderLeftColor = chosenCat ? tok(catColor[chosenCat]) : tok("--rule");
-      card.querySelectorAll('[data-role="cat"]').forEach(function(b){
-        b.classList.toggle("active", b.getAttribute("data-k") === chosenCat);
-      });
-      card.querySelectorAll('[data-role="time"]').forEach(function(b){
-        b.classList.toggle("active", b.getAttribute("data-k") === sortState.time[i]);
-      });
-    });
-
-    var summary = document.getElementById("sort-summary");
-    if (summary){
-      summary.innerHTML = catKeys.map(function(k){
-        var items = [];
-        causesEx.forEach(function(_, i){ if (sortState.cat[i] === k) items.push(i); });
-        var body = items.length
-          ? "<ul>" + items.map(function(i){ return "<li>" + (i + 1) + ". " + causesEx[i] + "</li>"; }).join("") + "</ul>"
-          : '<span class="empty">Inga orsaker hit än</span>';
-        return '<div class="sum-col"><h4 style="color:' + tok(catColor[k]) + '">' + catLabels[k] + "</h4>" + body + "</div>";
-      }).join("");
-    }
-
-    var done = 0;
-    causesEx.forEach(function(_, i){ if (sortState.cat[i] && sortState.time[i]) done++; });
-    var progress = document.getElementById("sort-progress");
-    if (progress) progress.textContent = done + " / " + causesEx.length + " orsaker helt sorterade";
-  }
-
-  function renderReflect(){
-    var wrap = document.getElementById("reflect-lines");
-    if (!wrap) return;
-    wrap.innerHTML = [0, 1, 2].map(function(idx){
-      var val = (sortState.reflect[idx] || "").replace(/"/g, "&quot;");
-      return '<div class="rline"><span class="mono" style="color:var(--accent-2);font-weight:600;">' + (idx + 1) + ".</span>" +
-        '<input type="text" data-idx="' + idx + '" placeholder="Orsak nr … därför att …" value="' + val + '"></div>';
-    }).join("");
-    wrap.addEventListener("input", function(e){
-      if (e.target.tagName === "INPUT"){
-        sortState.reflect[e.target.getAttribute("data-idx")] = e.target.value;
-        saveSortState();
-      }
-    });
-  }
-
-  renderSortList();
-  refreshSorter();
-  renderReflect();
-
-  // ---- navigation state machine ----
-  var chapters = ["ch-0","ch-1","ch-2","ch-3","ch-4","ch-5","ch-6","ch-7"];
-  var roman = ["I","II","III","IV","V","VI","VII","VIII"];
-  var current = -1; // -1 = cover
+  var chapters = ["ch-0","ch-1","ch-2","ch-3","ch-4"];
+  var roman = ["I","II","III","IV","V"];
+  var current = -1;
 
   var cover = document.getElementById("cover");
   var nav = document.getElementById("nav");
